@@ -3,7 +3,6 @@ const cors = require("cors");
 const pool = require('./dbconnect');
 
 const app = express();
-//Middleware stuff
 app.use(cors());
 // Use this to get access to req.body stuff
 app.use(express.json());
