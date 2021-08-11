@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import EditNoteModal from './EditNoteModal';
 
 const ListNotes = () => {
     const [notes, setNotes] = useState([]);
@@ -39,13 +39,17 @@ const ListNotes = () => {
         <div>
             <ul>
                 {notes.map(noteMemo => {
-                    // Each one gets an EditNote model & Delete button
-                    <button
-                        className="btn btn-danger"
-                        onClick={() => deleteNote(noteMemo.note_id)}
-                    >
-                        -
-                    </button>
+                    // Each one gets an EditNote modal & Delete button
+
+                    return <li key={noteMemo.note_id}>
+                        <EditNoteModal noteMemo={noteMemo} />
+                        <button
+                            className="btn btn-danger"
+                            onClick={() => deleteNote(noteMemo.note_id)}
+                        >
+                            -
+                        </button>
+                    </li>
                 })}
             </ul>
         </div>
