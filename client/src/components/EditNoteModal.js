@@ -3,16 +3,27 @@ import React, { useState } from 'react';
 const EditNoteModal = ({ noteMemo }) => {
     // Use hooks to setup component state
     const [note, setNote] = useState({
-        title: noteMemo.title,
-        memo: noteMemo.memo
+        title: "",
+        memo: ""
     })
+
+    function handleChange(e) {
+        const { name, value } = e.target;
+
+        setNote((prevNote) => {
+            return {
+                ...prevNote,
+                [name]: value,
+            };
+        });
+    }
 
     const updateNote = async (e) => {
         e.preventDefault();
 
         try {
             //Destructure title and memo from state object
-            const { title, memo } = { note }
+            const { title, memo } = note
 
             const response = await fetch(`http://localhost:5000/notes/${noteMemo.note_id}`, {
                 method: "PUT",
@@ -20,15 +31,31 @@ const EditNoteModal = ({ noteMemo }) => {
                 body: JSON.stringify({ title, memo })
             })
 
-            console.log('Edit a note related: ', response)
+            console.log('Edit a note related  to: ', response)
             window.location = "/";
 
         } catch (error) {
             console.error(error.message);
         }
     }
+    console.log(noteMemo)
+
     return (
         <>
+            {/* <form>
+                <input
+                    name="title"
+                    onChange={handleChange}
+                    value={note.title}
+                />
+                <textarea
+                    name="memo"
+                    onChange={handleChange}
+                    value={note.memo}
+
+                />
+                <button onClick={updateNote}>Add</button>
+            </form> */}
             <button
                 type="button"
                 className="btn btn-warning"
@@ -37,65 +64,26 @@ const EditNoteModal = ({ noteMemo }) => {
             >
                 Edit
             </button>
+            <div className="modal" id={`id${noteMemo.note_id}`} onClick={() => setNote(note)}>
+                <form className="form-control" >
+                    <div className="modal-body">
+                        <input
+                            name="title"
+                            onChange={handleChange}
+                            value={note.title}
+                        />
+                        <textarea
+                            name="memo"
+                            onChange={handleChange}
+                            value={note.memo}
 
-            {/* 
-        id = id10
-      */}
-            <div
-                className="modal"
-                id={`id${noteMemo.note_id}`}
-                onClick={() => setNote(note)}
-            >
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h4 className="modal-title">Edit Todo</h4>
-                            <button
-                                type="button"
-                                className="close"
-                                data-dismiss="modal"
-                                onClick={() => setNote(note)}
-                            >
-                                &times;
-                            </button>
-                        </div>
-
-                        <div className="modal-body">
-                            <input
-                                type="text"
-                                className="form-control"
-                                value={note.title}
-                                onChange={e => setNote(e.target.value)}
-                            />
-                            <input
-                                type="text"
-                                className="form-control"
-                                value={note.memo}
-                                onChange={e => setNote(e.target.value)}
-                            />
-                        </div>
-
-                        <div className="modal-footer">
-                            <button
-                                type="button"
-                                className="btn btn-warning"
-                                data-dismiss="modal"
-                                onClick={e => updateNote(e)}
-                            >
-                                Edit
-                            </button>
-                            {/* CLOSE BUTTON */}
-                            <button
-                                type="button"
-                                className="btn btn-danger"
-                                data-dismiss="modal"
-                                onClick={() => setNote(note)}
-                            >
-                                Close
-                            </button>
-                        </div>
+                        />
                     </div>
-                </div>
+
+                    <div className="modal-footer">
+                        <button onClick={updateNote}>Add</button>
+                    </div>
+                </form>
             </div>
         </>
     );

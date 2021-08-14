@@ -21,7 +21,7 @@ const ListNotes = () => {
         getNotes();
     }, []);
 
-    console.log(notes)
+    // console.log(notes)
 
     const deleteNote = async (id) => {
         try {
@@ -37,12 +37,18 @@ const ListNotes = () => {
 
     return (
         <div>
+            {/* <EditNoteModal /> */}
+
             <ul>
-                {notes.map(noteMemo => {
-                    // Each one gets an EditNote modal & Delete button
+                {/* Maybe only render EditNoteModal if notes ! == null  */}
+                {notes?.map(noteMemo => {
 
                     return <li key={noteMemo.note_id}>
+                        <h1>{noteMemo.title}</h1>
+                        <p>{noteMemo.memo}</p>
+
                         <EditNoteModal noteMemo={noteMemo} />
+
                         <button
                             className="btn btn-danger"
                             onClick={() => deleteNote(noteMemo.note_id)}
