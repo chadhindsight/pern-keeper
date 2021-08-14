@@ -37,27 +37,23 @@ const ListNotes = () => {
 
     return (
         <div>
-            {/* <EditNoteModal /> */}
+            {/* Maybe only render EditNoteModal if notes ! == null  */}
+            {notes?.map(noteMemo => {
 
-            <ul>
-                {/* Maybe only render EditNoteModal if notes ! == null  */}
-                {notes?.map(noteMemo => {
+                return <div key={noteMemo.note_id}>
+                    <h1>{noteMemo.title}</h1>
+                    <p>{noteMemo.memo}</p>
 
-                    return <li key={noteMemo.note_id}>
-                        <h1>{noteMemo.title}</h1>
-                        <p>{noteMemo.memo}</p>
+                    <EditNoteModal noteMemo={noteMemo} />
 
-                        <EditNoteModal noteMemo={noteMemo} />
-
-                        <button
-                            className="btn btn-danger"
-                            onClick={() => deleteNote(noteMemo.note_id)}
-                        >
-                            -
-                        </button>
-                    </li>
-                })}
-            </ul>
+                    <button
+                        className="btn btn-danger"
+                        onClick={() => deleteNote(noteMemo.note_id)}
+                    >
+                        -
+                    </button>
+                </div>
+            })}
         </div>
     );
 };
