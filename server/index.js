@@ -12,7 +12,7 @@ app.use(express.json());
 // Create note
 app.post("/notes", async (req, res) => {
     try {
-        // destructure info you get from req.body
+        // Destructure the info you get from req.body
         const { title, memo } = req.body;
         const newNote = await pool.query("INSERT INTO note (title, memo) VALUES($1, $2)",
             [title, memo])
@@ -55,7 +55,7 @@ app.put("/notes/:id", async (req, res) => {
         const { id } = req.params;
         const { title, memo } = req.body;
 
-        updatedNote = pool.query("UPDATE note SET title = $1, memo = $2 Where note_id = $3",
+        updatedNote = pool.query("UPDATE note SET title = $1, memo = $2 WHERE note_id = $3",
             [title, memo, id])
 
         res.json(`Note with id ${id} was udpated`);
@@ -72,7 +72,7 @@ app.delete("/notes/:id", async (req, res) => {
 
         const toBeDeleted = pool.query("DELETE FROM note WHERE note_id = $1", [id]);
 
-        res.json(`Todo with with id of ${id} was deleted!`)
+        res.json(`A note with with id of ${id} was deleted!`)
     } catch (error) {
         console.log(error.message)
     }
