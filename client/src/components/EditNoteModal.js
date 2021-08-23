@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 const EditNoteModal = ({ noteMemo }) => {
     // Use hooks to setup component state
     const [note, setNote] = useState({
-        title: "",
-        memo: ""
+        title: noteMemo.title,
+        memo: noteMemo.memo
     })
 
     function handleChange(e) {
@@ -12,6 +12,7 @@ const EditNoteModal = ({ noteMemo }) => {
 
         setNote((prevNote) => {
             return {
+                // Keeps a hold of the old state data
                 ...prevNote,
                 [name]: value,
             };
@@ -38,7 +39,6 @@ const EditNoteModal = ({ noteMemo }) => {
             console.error(error.message);
         }
     }
-    console.log(noteMemo)
 
     return (
         <>
@@ -64,27 +64,33 @@ const EditNoteModal = ({ noteMemo }) => {
             >
                 Edit
             </button>
-            <div className="modal" id={`id${noteMemo.note_id}`} onClick={() => setNote(note)}>
-                <form className="form-control" >
-                    <div className="modal-body">
-                        <input
-                            name="title"
-                            onChange={handleChange}
-                            value={note.title}
-                        />
-                        <textarea
-                            name="memo"
-                            onChange={handleChange}
-                            value={note.memo}
+            <div className="modal" id={`id${noteMemo.note_id}`}>
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <form className="form-control" >
+                            <div className="modal-body">
+                                <input
+                                    name="title"
+                                    onChange={handleChange}
+                                    value={note.title}
+                                    placeholder="Update your title"
+                                />
+                                <textarea
+                                    name="memo"
+                                    onChange={handleChange}
+                                    value={note.memo}
+                                    placeholder="Update your note..."
+                                />
+                            </div>
 
-                        />
+                            <div className="modal-footer">
+                                <button className="btn-warning" onClick={updateNote}>Update</button>
+                            </div>
+                        </form>
                     </div>
-
-                    <div className="modal-footer">
-                        <button onClick={updateNote}>Add</button>
-                    </div>
-                </form>
+                </div>
             </div>
+
         </>
     );
 };
