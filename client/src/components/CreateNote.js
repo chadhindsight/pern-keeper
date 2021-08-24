@@ -53,5 +53,4 @@ const CreateNote = () => {
         </div>
     );
 };
-// More work soon come!
 export default CreateNote;
