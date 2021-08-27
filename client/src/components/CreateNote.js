@@ -11,7 +11,7 @@ const CreateNote = () => {
 
         setNewNote((prevNote) => {
             return {
-                // Keeps a hold of the old state data.
+                // Keeps a hold of the old state data
                 ...prevNote,
                 [name]: value,
             };
