@@ -30,7 +30,7 @@ const CreateNote = () => {
             console.log(response)
 
         } catch (error) {
-            console.log(`${error} Sorry, could not submit your new note`)
+            console.log(`${error} Sorry, could not submit your new note.`)
         }
     }
 
