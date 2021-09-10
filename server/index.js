@@ -24,7 +24,7 @@ app.post("/notes", async (req, res) => {
 
 });
 
-// Read all notes.
+// Read all notes. Easy
 app.get("/notes", async (req, res) => {
     try {
         const allNotes = await pool.query("SELECT * FROM note");
