@@ -65,7 +65,7 @@ app.put("/notes/:id", async (req, res) => {
 
 });
 
-// Delete note
+// Delete a specific note note
 app.delete("/notes/:id", async (req, res) => {
     try {
         const { id } = req.params;
