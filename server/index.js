@@ -3,12 +3,7 @@ const cors = require("cors");
 const pool = require('./dbconnect');
 
 const app = express();
-// app.use(cors());
-var corsOptions = {
-    origin: 'http://localhost:3000',
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
-
+app.use(cors());
 // Use this to get access to req.body stuff
 app.use(express.json());
 
@@ -30,10 +25,10 @@ app.post("/notes", async (req, res) => {
 });
 
 // Read all notes
-app.get("/notes", cors(corsOptions), async (req, res) => {
+app.get("/notes", async (req, res) => {
     try {
         const allNotes = await pool.query("SELECT * FROM note");
-
+        console.log(allNotes.rows)
         res.json(allNotes.rows);
     } catch (error) {
         console.log(error.message)
@@ -84,6 +79,7 @@ app.delete("/notes/:id", async (req, res) => {
 
 });
 
-app.listen(5000, () => {
-    console.log('Server started on port 5000!');
+const PORT = 5001
+app.listen(PORT, () => {
+    console.log(`Server started on port ${PORT}!`);
 });
