@@ -79,7 +79,7 @@ app.delete("/notes/:id", async (req, res) => {
 
 });
 
-const PORT = 5001
+const PORT = 5001;
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}!`);
 });
