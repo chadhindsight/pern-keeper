@@ -3,7 +3,12 @@ const cors = require("cors");
 const pool = require('./dbconnect');
 
 const app = express();
-app.use(cors());
+// app.use(cors());
+var corsOptions = {
+    origin: 'http://localhost:3000',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
 // Use this to get access to req.body stuff
 app.use(express.json());
 
@@ -25,7 +30,7 @@ app.post("/notes", async (req, res) => {
 });
 
 // Read all notes
-app.get("/notes", async (req, res) => {
+app.get("/notes", cors(corsOptions), async (req, res) => {
     try {
         const allNotes = await pool.query("SELECT * FROM note");
 
@@ -82,4 +87,3 @@ app.delete("/notes/:id", async (req, res) => {
 app.listen(5000, () => {
     console.log('Server started on port 5000!');
 });
-// NB: TODO: Use a reusable custom error middleware in your catch statements
