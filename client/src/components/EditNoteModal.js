@@ -26,7 +26,7 @@ const EditNoteModal = ({ noteMemo }) => {
             //Destructure title and memo from state object
             const { title, memo } = note
 
-            const response = await fetch(`http://localhost:5000/notes/${noteMemo.note_id}`, {
+            const response = await fetch(`http://localhost:5001/notes/${noteMemo.note_id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ title, memo })

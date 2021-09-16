@@ -7,7 +7,7 @@ const ListNotes = () => {
     // Get all notes from the db
     const getNotes = async () => {
         try {
-            const response = await fetch("http://localhost:5000/notes");
+            const response = await fetch("http://localhost:5001/notes");
             const jsonData = await response.json();
 
             setNotes(jsonData);
