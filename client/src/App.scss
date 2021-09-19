@@ -1,4 +1,9 @@
 $myAlign: center;
+$headGoat: 55%;
+
+#header {
+  margin-bottom: $headGoat;
+}
 
 .App {
   text-align: $myAlign;
