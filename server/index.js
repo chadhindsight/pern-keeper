@@ -78,7 +78,7 @@ app.delete("/notes/:id", async (req, res) => {
     }
 
 });
-
+// Save what port node will be listening to as a variable
 const PORT = 5001;
 
 app.listen(PORT, () => {
