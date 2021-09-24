@@ -5,7 +5,7 @@ import ListNotes from './components/ListNotes';
 function App() {
   return (
     <div className="App">
-      <h1 id="#header">PERN KEEPER</h1>
+      <h1 id="#header">PERN KEEPER!</h1>
       <CreateNote />
       <ListNotes />
     </div>
