@@ -1,4 +1,3 @@
-// import './App.css';
 import './App.scss';
 import CreateNote from './components/CreateNote';
 import ListNotes from './components/ListNotes';
