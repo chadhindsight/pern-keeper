@@ -1,6 +1,11 @@
 // Save style values as variables
 $myAlign: center;
 $headGoat: 56%;
+$backColor: #dfe6e9;
+
+body {
+  background-color: $backColor;
+}
 
 #header {
   margin-bottom: $headGoat;
