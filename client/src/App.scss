@@ -14,3 +14,16 @@ body {
 .App {
   text-align: $myAlign;
 }
+
+// TODO: Make each note a card. USE MIXINS
+@mixin card($width, $bg, $border) {
+  width: $width;
+
+  background: $bg;
+
+  border: $border;
+}
+.note-card {
+  @include card(50%, lightblue, black 1px dotted);
+  margin-left: 25%;
+}
