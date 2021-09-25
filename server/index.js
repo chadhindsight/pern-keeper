@@ -49,7 +49,7 @@ app.get('/notes/:id', async (req, res) => {
 
 })
 
-// Update & edit note
+// Update & edit  a note
 app.put("/notes/:id", async (req, res) => {
     try {
         const { id } = req.params;
@@ -65,7 +65,7 @@ app.put("/notes/:id", async (req, res) => {
 
 });
 
-// Delete a specific note note
+// Delete a specific note note.
 app.delete("/notes/:id", async (req, res) => {
     try {
         const { id } = req.params;
