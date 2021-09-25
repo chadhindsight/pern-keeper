@@ -21,7 +21,6 @@ const ListNotes = () => {
         getNotes();
     }, []);
 
-    // console.log(notes)
 
     const deleteNote = async (id) => {
         try {
@@ -36,11 +35,11 @@ const ListNotes = () => {
     }
 
     return (
-        <div>
+        <section id="notes-container">
             {/* Maybe only render EditNoteModal if notes ! == null  */}
             {notes?.map(noteMemo => {
 
-                return <div key={noteMemo.note_id}>
+                return <div key={noteMemo.note_id} className="note-card">
                     <h1>{noteMemo.title}</h1>
                     <p>{noteMemo.memo}</p>
 
@@ -54,7 +53,7 @@ const ListNotes = () => {
                     </button>
                 </div>
             })}
-        </div>
+        </section>
     );
 };
 
