@@ -15,7 +15,7 @@ body {
   text-align: $myAlign;
 }
 
-// TODO: Make each note a card. USE MIXINS
+// TODO: Make each note a card by using Mixins
 @mixin card($width, $bg, $border) {
   width: $width;
 
