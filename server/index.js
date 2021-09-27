@@ -14,6 +14,7 @@ app.post("/notes", async (req, res) => {
     try {
         // Destructure the info you get from req.body to extract the title and memo to be added db
         const { title, memo } = req.body;
+
         const newNote = await pool.query("INSERT INTO note (title, memo) VALUES($1, $2)",
             [title, memo])
 
