@@ -37,7 +37,7 @@ app.get("/notes", async (req, res) => {
 
 });
 
-// Read a specific note
+// Read a specific note.
 app.get('/notes/:id', async (req, res) => {
     try {
         const { id } = req.params;
