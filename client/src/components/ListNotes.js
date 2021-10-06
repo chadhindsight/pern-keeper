@@ -9,7 +9,7 @@ const ListNotes = () => {
         try {
             const response = await fetch("http://localhost:5001/notes");
             const jsonData = await response.json();
-
+            // Update the state with notes from db
             setNotes(jsonData);
         } catch (error) {
             console.log(`${error} Sorry can't get your notes :(`)
