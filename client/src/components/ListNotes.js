@@ -36,7 +36,7 @@ const ListNotes = () => {
 
     return (
         <section id="notes-container">
-            {/* Maybe only render EditNoteModal if notes ! == null  */}
+            {/* Maybe only render EditNoteModal if notes are equal to null  */}
             {notes?.map(noteMemo => {
 
                 return <div key={noteMemo.note_id} className="note-card">
