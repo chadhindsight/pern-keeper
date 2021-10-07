@@ -30,7 +30,7 @@ const ListNotes = () => {
             setNotes(notes.filter(note => note.note_id !== id));
 
         } catch (error) {
-            console.log(`${error} Sorry that note was not deleted`)
+            console.log(`${error} Sorry, the note was not deleted`)
         }
     }
 
