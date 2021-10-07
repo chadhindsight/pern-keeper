@@ -26,7 +26,7 @@ const ListNotes = () => {
         try {
             const deleted = await fetch(`http://localhost:5001/${id}`, { method: "Delete" });
             console.log(deleted)
-            // Return the updated list of notes
+            // Return the updated list of notes.
             setNotes(notes.filter(note => note.note_id !== id));
 
         } catch (error) {
