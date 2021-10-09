@@ -4,7 +4,7 @@ import EditNoteModal from './EditNoteModal';
 const ListNotes = () => {
     const [notes, setNotes] = useState([]);
 
-    // Get all notes from the db
+    // Get all notes from the db. Bringing it back
     const getNotes = async () => {
         try {
             const response = await fetch("http://localhost:5001/notes");
