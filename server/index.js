@@ -50,7 +50,7 @@ app.get('/notes/:id', async (req, res) => {
 
 })
 
-// Update & edit  a note.ASS
+// Update & edit  a note
 app.put("/notes/:id", async (req, res) => {
     try {
         const { id } = req.params;
